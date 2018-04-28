@@ -61,7 +61,11 @@ public class Community extends AppCompatActivity {
        postButton.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               postCommunityMessage();
+               if(!(titleInput.getText().toString()).equals("") && !(bodyInput.getText().toString()).equals("")){
+                   postCommunityMessage();
+               }else{
+                   Toast.makeText(Community.this, "Title or Message Body is Empty", Toast.LENGTH_SHORT).show();
+               }
            }
        });
     }

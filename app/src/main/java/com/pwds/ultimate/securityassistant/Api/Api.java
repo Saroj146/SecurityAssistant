@@ -5,6 +5,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 import com.pwds.ultimate.securityassistant.Model.CommunityPostDto;
 import com.pwds.ultimate.securityassistant.Model.LoginDto;
@@ -25,5 +26,8 @@ public interface Api {
 
     @POST("community")
     Call<String> postCommunityMessage(@Header("userId") Long userId , @Body CommunityPostDto communityPostDto);
+
+    @GET("visibility/{lat}/{lng}")
+    Call<ArrayList<RegisterDto>> getNearBY(@Path("lat") Double lat, @Path("lng") Double lng);
 
 }

@@ -47,7 +47,23 @@ public class Register extends AppCompatActivity {
 //                            Toast.LENGTH_LONG).show();
 //                    startActivity(new Intent(Register.this, MapsActivity.class));
 //                }
-                register();
+                if(!(nameInput.getText().toString()).equals("")&&!(spinner.getSelectedItem().toString()).equals("")&&!(usernameInput.getText().toString()).equals("")&&!(passwordInput.getText().toString()).equals("")&&!(mobileInput.getText().toString()).equals("")){
+                    if((mobileInput.getText().toString()).matches("[9][8|7][4|5|6|2|1|0][0-9]{7}")){
+                        if(!(contactPersonMobileInput.getText().toString()).equals("")){
+                            if((contactPersonMobileInput.getText().toString()).matches("[9][8|7][4|5|6|2|1|0][0-9]{7}")){
+                                 register();
+                            }else{
+                                Toast.makeText(Register.this, "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+                            }
+                        }else {
+                            register();
+                        }
+                    }else{
+                        Toast.makeText(Register.this, "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(Register.this, "Few fields are Empty", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -96,7 +112,7 @@ public class Register extends AppCompatActivity {
         GPSTracker gps = new GPSTracker(this);
         double latitude = gps.getLatitude();
         double longitude = gps.getLongitude();
-        RegisterDto registerDto = new RegisterDto();
+        final RegisterDto registerDto = new RegisterDto();
         registerDto.setName(name);
         registerDto.setPhoneNumber(phoneNumber);
         registerDto.setUserType(userType);
@@ -116,6 +132,10 @@ public class Register extends AppCompatActivity {
             @Override
             public void onResponse(Call<RegisterDto> call, Response<RegisterDto> response) {
                 if (response.isSuccessful()) {
+
+                    SharedPreferences.Editor editor = getSharedPreferences("LOGIN_TEST", MODE_PRIVATE).edit();
+                    editor.putString("mobile", registerDto.getContactPersonNo());
+                    editor.apply();
                     Toast.makeText(Register.this, "Register Success", Toast.LENGTH_SHORT).show();
                     Intent loginActivity = new Intent(Register.this, Login.class);
                     finish();

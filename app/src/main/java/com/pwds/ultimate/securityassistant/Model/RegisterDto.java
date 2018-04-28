@@ -38,6 +38,11 @@ public class RegisterDto {
     @SerializedName("lng")
     @Expose
     public Double lng;
+    @SerializedName("distance")
+    @Expose
+    public String distance;
+
+    public String getDistance() { return distance; }
 
     public Long getId() { return id; }
 
@@ -72,6 +77,8 @@ public class RegisterDto {
     public Double getLat() { return lat; }
 
     public Double getLng() { return lng; }
+
+    public void setDistance(String distance) { this.distance = distance; }
 
     public void setId(Long id) { this.id = id; }
 

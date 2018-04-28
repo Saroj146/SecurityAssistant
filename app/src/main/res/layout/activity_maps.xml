@@ -25,7 +25,7 @@
 
     <Button
         android:id="@+id/communityButton"
-        android:layout_width="wrap_content"
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:background="#19a0da"
         android:layout_alignParentTop="true"
@@ -35,16 +35,30 @@
         android:textColor="#ffffff" />
 
     <Button
-        android:id="@+id/emBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/viewNearBy"
+        android:layout_width="185dp"
         android:layout_height="wrap_content"
-        android:background="#da2c19"
+        android:background="#e6554d"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:padding="8dp"
         android:layout_margin="5dp"
-        android:text="Emergency"
+        android:text="View List"
         android:textColor="#ffffff" />
 
-
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/emBtn"
+            android:text="Emergency"
+            android:textColor="#ffffff"
+            android:textSize="35dp"
+            android:background="#da2c19"
+            android:layout_marginTop="370dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </RelativeLayout>
+
